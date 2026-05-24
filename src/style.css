@@ -264,6 +264,25 @@ li strong {
   color: var(--text);
 }
 
+/* ── Playlist ── */
+.playlist-section {
+  background: var(--bg);
+}
+
+.playlist-intro {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: var(--sp-md);
+  text-shadow: 0 0 20px rgba(240, 210, 170, 0.55), 0 0 50px rgba(198, 150, 96, 0.30);
+}
+
+.spotify-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(16px);
+}
+
 /* ── Alert box ── */
 .alert-box {
   background: var(--bg-alert);

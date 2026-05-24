@@ -62,6 +62,11 @@ gsap.to('.tl-row', {
 })
 
 // ── Footer ──
+gsap.to('.spotify-wrap', {
+  opacity: 1, y: 0, duration: 0.9, ease,
+  scrollTrigger: { trigger: '.playlist-section', start: 'top 82%' }
+})
+
 gsap.to('.disclaimer', {
   opacity: 1, y: 0, duration: 0.7, ease,
   scrollTrigger: { trigger: 'footer', start: 'top 90%' }
