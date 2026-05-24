@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+
+# internal — não vai pro repo
+CLAUDE.md
+info/
+assets/
+scripts/
