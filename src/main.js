@@ -5,6 +5,40 @@ gsap.registerPlugin(ScrollTrigger)
 
 const ease = 'power3.out'
 
+// ── Mood prompt ──
+const PLAYLIST = 'https://open.spotify.com/embed/playlist/6QrddvgGYrDq1aTEOFb7rK?utm_source=generator&theme=0'
+const player = document.getElementById('spotify-player')
+const prompt = document.getElementById('mood-prompt')
+
+const loadPlayer = (autoplay) => {
+  player.src = autoplay ? PLAYLIST + '&autoplay=1' : PLAYLIST
+}
+
+const dismissPrompt = () => {
+  gsap.to(prompt, { y: 120, opacity: 0, duration: 0.5, ease, onComplete: () => prompt.remove() })
+}
+
+document.getElementById('mood-yes').addEventListener('click', () => {
+  loadPlayer(true)
+  const inner = prompt.querySelector('.mood-inner')
+  const actions = prompt.querySelector('.mood-actions')
+  gsap.to(actions, { opacity: 0, duration: 0.2, onComplete: () => {
+    actions.style.display = 'none'
+    inner.querySelector('.mood-text').textContent = 'Aumente o volume ♪'
+    gsap.fromTo(inner, { opacity: 0 }, { opacity: 1, duration: 0.4 })
+    gsap.delayedCall(2, dismissPrompt)
+  }})
+})
+
+document.getElementById('mood-no').addEventListener('click', () => {
+  loadPlayer(false)
+  dismissPrompt()
+})
+
+gsap.delayedCall(1.5, () => {
+  gsap.to(prompt, { bottom: '1.25rem', duration: 0.7, ease })
+})
+
 // ── Progress bar ──
 const bar = document.getElementById('progress-bar')
 window.addEventListener('scroll', () => {
